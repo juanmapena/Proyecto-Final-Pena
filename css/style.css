@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.article1{
+    display: flex;
+    justify-content: end;
+}
+
+.article2{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo{
+    display: flex;
+    justify-content: flex-end;
+    width: 150px;
+    height: 150px;
+}
+
+.h1{
+    font-size: 30px;
+    font-weight: 600;
+    color: black;
+    padding: 3rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.botones{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    width: 400px;
+}
+
+.parrafo{
+    color: gray;
+    font-size: 12px;
+    text-align: center;
+}
+
+.divFooter{
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+#resultados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

@@ -1,64 +1,70 @@
-let cantidadAlumnos = 0
+document.addEventListener("DOMContentLoaded", function () {
+    const formularioAlumnos = document.getElementById("formularioAlumnos");
+    const resultadosElement = document.getElementById("resultados");
 
-do{
-    cantidadAlumnos = parseInt(prompt("Ingrese la cantidad de alumnos"))
-} while (isNaN(cantidadAlumnos)) 
+    formularioAlumnos.addEventListener("submit", function (event) {
+        event.preventDefault(); // Evitar que el formulario se envíe y refresque la página
 
-function condicion(promedio){
+        const nombre = document.getElementById("nombreAlumnos").value;
+        const calificacion1 = parseFloat(document.getElementById("calificacion1Alumnos").value);
+        const calificacion2 = parseFloat(document.getElementById("calificacion2Alumnos").value);
 
-    //Si el promedio es mayor a 6, devolvemos promedio y aprobado
-    if (promedio >= 6){
-        return "APROBADO"
+        if (isNaN(calificacion1) || isNaN(calificacion2) || calificacion1 < 0 || calificacion1 > 10 || calificacion2 < 0 || calificacion2 > 10) {
+            mostrarError("Las calificaciones ingresadas no son válidas. Por favor, ingrese valores entre 0 y 10.");
+            return;
+        }
+
+        if (siEsUnNumero(nombre)) {
+            mostrarError("El nombre ingresado no es válido. Por favor, ingrese un nombre válido.");
+            return;
+        }
+
+        const promedio = (calificacion1 + calificacion2) / 2;
+        const condicion2 = condicion(promedio);
+
+        // Limpia el contenido anterior en caso de que haya resultados previos
+        resultadosElement.innerHTML = "";
+
+        // Mostrar los resultados en el elemento 'resultados'
+        const estudianteResult = document.createElement("p");
+        estudianteResult.textContent =
+            "El estudiante " +
+            nombre +
+            " obtuvo un Promedio de: " +
+            promedio +
+            ", por lo tanto su condición actual es: " +
+            condicion2;
+
+        resultadosElement.appendChild(estudianteResult);
+
+        // Guardar los resultados en el Local Storage
+        const estudiantesGuardados = JSON.parse(localStorage.getItem("estudiantes")) || [];
+        const nuevoEstudiante = {
+            nombre,
+            promedio,
+            condicion2,
+        };
+        estudiantesGuardados.push(nuevoEstudiante);
+        localStorage.setItem("estudiantes", JSON.stringify(estudiantesGuardados));
+    });
+});
+
+function condicion(promedio) {
+    if (promedio >= 6) {
+        return "APROBADO";
+    } else {
+        return "DESAPROBADO";
     }
-
-    //Si el promedio es menor a 6, devolvemos promedio y desaprobado
-    else{
-        return "DESAPROBADO"
-    }
-} 
-
-for (let i = 1; i <= cantidadAlumnos; i++){
-
-//Pedimos que ingrese el nombre del estudiante
-let nombre = prompt("Ingrese el nombre del alumno")
-
-//Pedimos que ingrese la nota 1 del estudiante
-let nota1 = 0
-do{
-    nota1 = parseInt(prompt("Ingrese la nota 1 del estudiante"))
-} while (isNaN(nota1) || nota1 <= 0 || nota1 > 10) 
-
-//Pedimos que ingrese la nota 2 del estudiante
-let nota2 = 0
-do{
-    nota2 = parseInt(prompt("Ingrese la nota 2 del estudiante "))
-} while (isNaN(nota2) || nota2 <= 0 || nota2 > 10) 
-
-//calculamos el promedio aca directamente y le pasamos como parametro a la funcion, solo el promedio
-let promedio = (nota1 + nota2) / 2
-
-//llamamos a la funcion y le pasamos los parametros de nota1 y nota2, pero como la funcion nos retorna 2 valores, guardamos esos 2 valores en 2 variables e igualamos a la funcion
-let condicion2 = condicion(promedio)
-
-
-//Creamos un array vacio, donde dentro se creara un objeto para cada estudiante, con su respectiva informacion
-const estudiantes = [];
-
-const estudiante = {
-    nombre,
-    promedio,
-    condicion2,
-};
-
-
-estudiantes.push (estudiante)
-
-//Se consologuea los resultados finales de cada alumno, mediante un metodo de busqueda (forEach en este caso) se retorna la informacion del array
-console.log("Resultados Finales de cada alumno:");
-estudiantes.forEach((estudiante) => {
-    console.log( "El estudiante " + estudiante.nombre + " obtuvo un Promedio de: " + estudiante.promedio + ", por lo tanto su condición actual es: " + estudiante.condicion2);
 }
 
-)
+function siEsUnNumero(value) {
+    return !isNaN(value);
+}
 
+function mostrarError(message) {
+    const errorElement = document.createElement("p");
+    errorElement.textContent = message;
+    errorElement.style.color = "red";
+    resultadosElement.innerHTML = ""; // Limpiar resultados anteriores
+    resultadosElement.appendChild(errorElement);
 }
