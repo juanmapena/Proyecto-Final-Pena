@@ -13,49 +13,60 @@
 <body>
     <header>
         <article class="article1">
-            <img class="logo" src="./assets/img/logo-escuela.webp" alt="">
+            <img class="logo" src="./assets/img/logo-escuela.webp" alt="Logo Borcelle Academy">
         </article>
+
+        <section>
+            <a href="./home.html" class="btn btn-primary anclaBoton">Home</a>
+        </section>
     </header>
 
     <main>
-    <div>
-        <h1 class="h1">Bienvenidos a la calculadora de Borcelle Academy!</h1>
-    </div>
+        <div>
+            <h1 class="h1">Bienvenidos a la calculadora de Borcelle Academy!</h1>
+        </div>
 
-    <article class="article2">
-        <p>Querido/a Estudiante! Si usted desea saber cuál es su condición académica actual, ingrese los siguientes datos:</p>
-    </article>
-
-
-    <form class="container botones" id="formularioAlumnos">
-        <label for="nombreAlumnos">Ingrese el nombre del estudiante</label>
-        <input type="text" id="nombreAlumnos" required>
-        <label for="calificacion1Alumnos">Ingrese la primera calificación</label>
-        <input type="number" id="calificacion1Alumnos" min="0" max="10" step="0.1" required>
-        <label for="calificacion2Alumnos">Ingrese la segunda calificación</label>
-        <input type="number" id="calificacion2Alumnos" min="0" max="10" step="0.1" required>
-        <p class="parrafo">Al enlistar ambas calificaciones, el sistema realizará un promedio</p>
-        <input type="submit" value="Enviar" class="btn btn-success">
-    </form>
-
-    <div id="resultados"></div>
+        <article class="article2">
+            <p>Querido/a Estudiante! Si usted desea saber cuál es su condición académica actual, ingrese los siguientes
+                datos:</p>
+        </article>
 
 
-</main>
+        <form class="container botones" id="formularioAlumnos">
+            <label for="nombreAlumnos">Ingrese el nombre del estudiante</label>
+            <input type="text" id="nombreAlumnos" required>
+            <label for="materiaAlumnos">Ingrese la materia que quiera analizar</label>
+            <input type="text" id="materiaAlumnos" required>
+            <label for="calificacion1Alumnos">Ingrese la primera calificación</label>
+            <input type="number" id="calificacion1Alumnos" min="0" max="10" step="0.1" required>
+            <label for="calificacion2Alumnos">Ingrese la segunda calificación</label>
+            <input type="number" id="calificacion2Alumnos" min="0" max="10" step="0.1" required>
+            <p class="parrafo">Al enlistar ambas calificaciones, el sistema realizará un promedio</p>
+            <input type="submit" value="Enviar" class="btn btn-success">
+        </form>
 
-<footer>
-    <div class="divFooter">
-        <p>Borcelle Academy | Buenos Aires - Argentina</p>
-    </div>
-</footer>
+        <section class="container botones">
+            <input type="button" id="historialBtn" value="Historial de promedios" class="btn  btn-light">
+        </section>
 
+        <!-- Este div muestra los resultados por pantalla -->
+        <div id="resultados"></div>
+
+        <!-- Este div muestra el historial de promedios por pantalla -->
+        <div class=" container botones historial-container" id="historialContainer" class="btn  btn-light"></div>
+    </main>
+
+    <footer>
+        <div class="divFooter">
+            <p>Borcelle Academy | Buenos Aires - Argentina</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-
-    <script src="./index.js">
-
-    </script>
+    <script src="./js/index.js"></script>
 
 </body>
 
