@@ -47,7 +47,7 @@ https://juanmapena.github.io/Proyecto-Final-Pena/
 
 ---
 
-🌐 API utilizada
+## 🌐 API utilizada
 
 Se consume la API pública de universidades de EE. UU. :
 
