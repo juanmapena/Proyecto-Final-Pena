@@ -45,6 +45,8 @@ Este proyecto simula una herramienta de análisis académico para los alumnos de
 Observá el proyecto a través del siguiente link:
 https://juanmapena.github.io/Proyecto-Final-Pena/
 
+---
+
 🌐 API utilizada
 
 Se consume la API pública de universidades de EE. UU. :
@@ -55,7 +57,3 @@ Se utiliza la apiKey propia para obtener datos como nombres de instituciones.
 
 Los resultados se muestran dinámicamente en el DOM con estilos personalizados.
 
-📸 Capturas sugeridas
-
-![Formulario de calificaciones](./assets/img/captura-formulario.png)
-![Resultado con promedio](./assets/img/captura-resultado.png)
